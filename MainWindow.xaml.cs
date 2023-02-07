@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Controls;
 using System.IO;
 
 namespace ToursApp
@@ -32,7 +33,7 @@ namespace ToursApp
         private void ImportTours()
         {
             var fileData = File.ReadAllLines(@"C:\Users\Admin\Desktop\Nikolaev Robert\Tours.txt");
-            var images = Directory.GetFiles(@"C:\Users\Admin\Desktop\Nikolaev Robert\Туры фото");
+            var images = Directory.GetFiles(@"C:\Users\Admin\Desktop\Nikolaev Robert\Tours image");
             foreach (var line in fileData)
             {
                 var data = line.Split('\t');

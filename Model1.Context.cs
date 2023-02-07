@@ -15,11 +15,19 @@ namespace ToursApp
     
     public partial class Николаев_РобертEntities : DbContext
     {
+        private static Николаев_РобертEntities _context;
         public Николаев_РобертEntities()
             : base("name=Николаев_РобертEntities")
         {
         }
     
+        public static Николаев_РобертEntities GetContext()
+        {
+            if (_context == null)
+                _context = new Николаев_РобертEntities();
+            return _context;
+        }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
