@@ -20,9 +20,17 @@ namespace ToursApp
     /// </summary>
     public partial class AddEditPage : Page
     {
+        private Hotel _currentHotel = new Hotel();
         public AddEditPage()
         {
             InitializeComponent();
+            DataContext = _currentHotel;
+            ComboCountries.ItemsSource = Николаев_РобертEntities.GetContext().Country.ToList();
+        }
+
+        private void BtnSave_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new AddEditPage());
         }
     }
 }
