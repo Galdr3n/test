@@ -43,5 +43,13 @@ namespace ToursApp
         {
             Manager.MainFrame.Navigate(new AddEditPage());
         }
+        private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (Visibility == Visibility.Visible)
+            {
+                Николаев_РобертEntities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
+                DGridHotels.ItemsSource = Николаев_РобертEntities.GetContext().Hotel.ToList();
+            }
+        }
     }
 }

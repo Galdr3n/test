@@ -30,7 +30,31 @@ namespace ToursApp
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
-            Manager.MainFrame.Navigate(new AddEditPage());
+            StringBuilder errors = new StringBuilder();
+            if (string.IsNullOrWhiteSpace(_currentHotel.Name))
+                errors.AppendLine("Укажите название отеля");
+            if (_currentHotel.CountOfStars < 1 || _currentHotel.CountOfStars > 5)
+                errors.AppendLine("Количество звёзд - число от 1 до 5");
+            if (_currentHotel.Country == null)
+                errors.AppendLine("Выберите страну");
+
+            if (errors.Length > 0)
+            {
+                MessageBox.Show(errors.ToString());
+                return;
+            }
+            if (_currentHotel.id == 0)
+                Николаев_РобертEntities.GetContext().Hotel.Add(_currentHotel);
+            try
+            {
+                Николаев_РобертEntities.GetContext().SaveChanges();
+                MessageBox.Show("Информация сохранена");
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+
         }
     }
 }
