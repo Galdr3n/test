@@ -40,7 +40,7 @@ namespace ToursApp
             if (_currentHotel.CountOfStars < 1 || _currentHotel.CountOfStars > 5)
                 errors.AppendLine("Количество звёзд - число от 1 до 5");
             if (_currentHotel.Country == null)
-                errors.AppendLine("Выберите странуу");
+                errors.AppendLine("Выберите страну");
 
             if (errors.Length > 0)
             {
