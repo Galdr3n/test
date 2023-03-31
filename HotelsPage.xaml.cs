@@ -41,7 +41,24 @@ namespace ToursApp
         }
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
-        
+            var hotelsForRemoving = DGridHotels.SelectedItems.Cast<Hotel>().ToList();
+
+            if (MessageBox.Show($"Вы точно хотите удалить следующее {hotelsForRemoving.Count()} элементов","Внимание",
+            MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    Николаев_РобертEntities.GetContext().Hotel.RemoveRange(hotelsForRemoving);
+                    Николаев_РобертEntities.GetContext().SaveChanges();
+                    MessageBox.Show("Данные удалены!");
+
+                    DGridHotels.ItemsSource = Николаев_РобертEntities.GetContext().Hotel.ToList();
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString());
+                }
+            }
         }
         private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
