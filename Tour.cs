@@ -28,7 +28,7 @@ namespace ToursApp
         public byte[] ImagePreview { get; set; }
         public decimal Price { get; set; }
         public bool isActual { get; set; }
-    
+        public bool IsActual { get; internal set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Hotel> Hotel { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
